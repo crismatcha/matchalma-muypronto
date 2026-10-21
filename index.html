@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matchalma · Muy pronto</title>
+<meta name="description" content="Algo muy especial está a punto de llegar. Apúntate y entra antes que nadie.">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; script-src 'self'; connect-src https://a.klaviyo.com; form-action 'none'; base-uri 'none'">
+<meta name="theme-color" content="#FEFCF5">
+<meta property="og:title" content="Matchalma · Muy pronto">
+<meta property="og:description" content="Algo muy especial está a punto de llegar. Apúntate y entra antes que nadie.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preload" href="assets/italianno.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<main class="mp-portada">
+  <div class="mp-foto" aria-hidden="true">
+    <img src="assets/hero-1800.jpg" srcset="assets/hero-1000.jpg 1000w, assets/hero-1800.jpg 1800w" sizes="(max-width: 860px) 100vw, 64vw" alt="" width="1800" height="1005" fetchpriority="high">
+  </div>
+
+  <header class="mp-cabecera">
+    <a class="mp-logo" href="./" aria-label="Matchalma"><img src="assets/logo.png" alt="Matchalma" width="560" height="147"></a>
+  </header>
+
+  <section class="mp-centro">
+    <div class="mp-texto">
+      <h1 class="mp-titulo">Algo muy <span class="mp-script">especial</span> está a punto de llegar</h1>
+
+      <p class="mp-frase" id="mp-intro">Un pequeño ritual que puede cambiar tus días.<br>Todavía no podemos contarte más, <em>pero muy pronto...</em></p>
+
+      <div class="mp-acceso">
+        <p class="mp-acceso-titulo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>
+          Acceso privado
+        </p>
+        <p class="mp-acceso-sub">Solo para quienes se apunten. Serás de los primeros en enterarte.</p>
+
+        <form class="mp-form" id="mp-form" novalidate>
+          <label class="mp-consent" for="mp-acepto">
+            <input id="mp-acepto" name="acepto" type="checkbox" required>
+            <span>Quiero recibir por correo el aviso de apertura y las novedades y promociones de Matchalma. He leído la <a href="privacidad/">política de privacidad</a>.</span>
+          </label>
+          <div class="mp-fila">
+            <label class="mp-sr" for="mp-correo">Tu correo</label>
+            <input class="mp-input" id="mp-correo" name="correo" type="email" inputmode="email" autocomplete="email" placeholder="Tu correo" required>
+            <button class="mp-boton" type="submit">Quiero apuntarme</button>
+          </div>
+          <div class="mp-trampa" aria-hidden="true">
+            <label for="mp-web">No rellenes este campo</label>
+            <input id="mp-web" name="web" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="mp-error" id="mp-error" role="alert" hidden></p>
+        </form>
+
+        <div class="mp-gracias" id="mp-gracias" role="status" hidden>
+          <strong>Ya estás dentro.</strong>
+          <p>Te avisaremos antes que a nadie. Hemos apuntado <span id="mp-gracias-correo"></span>.</p>
+          <p class="mp-aparte">Puedes darte de baja cuando quieras escribiéndonos a <a href="mailto:hola@matchalma.com">hola@matchalma.com</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="mp-pie">
+    <span>© 2026 Matchalma</span>
+    <nav aria-label="Información">
+      <a href="privacidad/">Política de privacidad</a>
+      <a href="mailto:hola@matchalma.com">hola@matchalma.com</a>
+    </nav>
+  </footer>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
