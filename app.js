@@ -27,16 +27,17 @@
 
   function aviso(texto) { err.textContent = texto; err.hidden = false; }
 
-  /* Si el envío falla, además del mensaje se da un código (para saber qué pasó: «red» = no llegó a Klaviyo, un número = Klaviyo respondió con error)
-     y un enlace que abre el correo con el mensaje ya escrito, para que nadie se quede sin apuntarse. */
+  /* Si el envío falla se explica en llano y se ofrece una salida: probar con otra conexión o escribirnos con el correo ya redactado.
+     El código técnico («red» = no llegó a Klaviyo; un número = Klaviyo respondió con error) NO se enseña a la persona: va escondido en el atributo data-codigo y dentro del correo de «escríbenos». */
   function avisoFallo(codigo, correo) {
     err.textContent = '';
-    err.appendChild(document.createTextNode('No hemos podido apuntarte ahora. Si usas un bloqueador de anuncios o una protección del navegador, desactívalo para esta página y vuelve a intentarlo. O '));
+    err.setAttribute('data-codigo', codigo);
+    err.appendChild(document.createTextNode('No hemos podido apuntarte ahora. Prueba con otra conexión (por ejemplo, los datos del móvil en vez del wifi) o desactiva el bloqueador de anuncios o la VPN. Si sigue sin funcionar, '));
     var a = document.createElement('a');
-    a.href = 'mailto:hola@matchalma.com?subject=' + encodeURIComponent('Quiero apuntarme a Matchalma') + '&body=' + encodeURIComponent('Hola, quiero que me apuntéis para el aviso de apertura. Mi correo es ' + correo);
+    a.href = 'mailto:hola@matchalma.com?subject=' + encodeURIComponent('Quiero apuntarme a Matchalma') + '&body=' + encodeURIComponent('Hola, quiero que me apuntéis para el aviso de apertura. Mi correo es ' + correo + '\n\n(Dato técnico, por favor no borrar: ' + codigo + ')');
     a.textContent = 'escríbenos y te apuntamos nosotros';
     err.appendChild(a);
-    err.appendChild(document.createTextNode(' (código ' + codigo + ').'));
+    err.appendChild(document.createTextNode('.'));
     err.hidden = false;
   }
 
