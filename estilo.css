@@ -122,7 +122,7 @@ a:hover { color: var(--verde-claro); }
   line-height: 1.5;
   color: var(--marron);
 }
-.mp-frase em { font-family: var(--script); font-style: normal; font-size: 1.85em; line-height: 1; color: var(--verde); margin-left: .18em; }
+.mp-frase em { font-family: var(--script); font-style: normal; font-size: 1.85em; line-height: 1; color: var(--verde); margin-left: .18em; display: inline-block; white-space: nowrap; } /* «pero sí muy pronto...» va entero: si no cabe en la línea, baja completo (nunca se parte entre «pero» y «sí») */
 
 /* ---------- Tarjeta de acceso ---------- */
 .mp-acceso {
