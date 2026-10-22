@@ -27,6 +27,19 @@
 
   function aviso(texto) { err.textContent = texto; err.hidden = false; }
 
+  /* Si el envío falla, además del mensaje se da un código (para saber qué pasó: «red» = no llegó a Klaviyo, un número = Klaviyo respondió con error)
+     y un enlace que abre el correo con el mensaje ya escrito, para que nadie se quede sin apuntarse. */
+  function avisoFallo(codigo, correo) {
+    err.textContent = '';
+    err.appendChild(document.createTextNode('No hemos podido apuntarte ahora. Si usas un bloqueador de anuncios o una protección del navegador, desactívalo para esta página y vuelve a intentarlo. O '));
+    var a = document.createElement('a');
+    a.href = 'mailto:hola@matchalma.com?subject=' + encodeURIComponent('Quiero apuntarme a Matchalma') + '&body=' + encodeURIComponent('Hola, quiero que me apuntéis para el aviso de apertura. Mi correo es ' + correo);
+    a.textContent = 'escríbenos y te apuntamos nosotros';
+    err.appendChild(a);
+    err.appendChild(document.createTextNode(' (código ' + codigo + ').'));
+    err.hidden = false;
+  }
+
   var ultimaSugerencia = '';
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -80,11 +93,11 @@
       body: JSON.stringify(cuerpo),
       referrerPolicy: 'no-referrer'
     }).then(function (r) {
-      if (!(r.status === 202 || r.ok)) throw new Error('klaviyo ' + r.status);
+      if (!(r.status === 202 || r.ok)) throw new Error(String(r.status));
       mostrarGracias(correo);
-    }).catch(function () {
+    }).catch(function (e) {
       boton.disabled = false;
-      aviso('No hemos podido apuntarte ahora. Inténtalo en un momento o escríbenos a hola@matchalma.com.');
+      avisoFallo(/^\d{3}$/.test(e && e.message) ? e.message : 'red', correo);
     });
   });
 
